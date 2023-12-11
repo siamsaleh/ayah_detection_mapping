@@ -2,11 +2,11 @@ import cv2 as cv
 import numpy as np
 from matplotlib import pyplot as plt
 
-img_rgb = cv.imread('page-004.png')
-assert img_rgb is not None, "file could not be read, check with os.path.exists()"
+img_rgb = cv.imread('sample/page-004.png')
+# assert img_rgb is not None, "file could not be read, check with os.path.exists()"
 img_gray = cv.cvtColor(img_rgb, cv.COLOR_BGR2GRAY)
-template = cv.imread('template/ayah_detect_1.png', cv.IMREAD_GRAYSCALE)
-assert template is not None, "file could not be read, check with os.path.exists()"
+template = cv.imread('template/ayah_detect_trans.png', cv.IMREAD_GRAYSCALE)
+# assert template is not None, "file could not be read, check with os.path.exists()"
 w, h = template.shape[::-1]
 res = cv.matchTemplate(img_gray, template, cv.TM_CCOEFF_NORMED)
 threshold = 0.8
