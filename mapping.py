@@ -1,5 +1,6 @@
 import detect_ayah
 import line_detect
+import support_class
 import cv2
 
 image_path = 'img/surah_border_less_sample/page-602.png'
@@ -40,8 +41,9 @@ print(left_top)
 print(left_bottom)
 
 # TODO all points in this rectangle
-
-# TODO find uniq_detected_points in this rectangle points
+is_available = support_class.find_point_rectangle(left_top, right_bottom, uniq_detected_points[3])
+print(uniq_detected_points[3])
+print(is_available)
 
 # TODO sort line points
 
