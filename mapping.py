@@ -61,25 +61,25 @@ def line_position(line_no):
 # image_path = 'img/surah_border_less_sample/page-{0:03d}.png'.format(page)
 # img = cv2.imread(image_path, 0)
 
-# Ayah detected points
-next_page_start = 0
-uniq_detected_points, end_index = (
-    detect_ayah.page_ayah_detect(image_path, next_page_start, 'test.png'))
+# # Ayah detected points
+# next_page_start = 0
+# uniq_detected_points, end_index = (
+#     detect_ayah.page_ayah_detect(image_path, next_page_start, 'test.png'))
 
-print("Ayah")
-print(len(uniq_detected_points))
+# print("Ayah")
+# print(len(uniq_detected_points))
 # print(uniq_detected_points)
 # for point in uniq_detected_points:
 #     print(point)
 
 # line detected point
-uniq_line_start_end_points = line_detect.line_detect_points(image_path)
-uniq_line_start_end_points = sorted(uniq_line_start_end_points, key=lambda x: x[0][1])
+# uniq_line_start_end_points = line_detect.line_detect_points(image_path)
+# uniq_line_start_end_points = sorted(uniq_line_start_end_points, key=lambda x: x[0][1])
 
-print("Line")
-line_count = len(uniq_line_start_end_points)
-print(line_count)
-print(uniq_line_start_end_points)
+# print("Line")
+# line_count = len(uniq_line_start_end_points)
+# print(line_count)
+# print(uniq_line_start_end_points)
 
 ##########################################################################
 
@@ -138,7 +138,28 @@ index = 0
 position = 1
 
 
-for page in range(2, 100):
+for page in range(2, 15):
+    print("#" * 200)
+
+    image_path = 'img/surah_border_less_sample/page-{0:03d}.png'.format(page)
+    img = cv2.imread(image_path, 0)
+
+    # Ayah detected points
+    # next_page_start = 0
+    uniq_detected_points, end_index = (
+        detect_ayah.page_ayah_detect(image_path, index, 'test.png'))
+
+    print("Ayah")
+    print(len(uniq_detected_points))
+
+    # line detected point
+    uniq_line_start_end_points = line_detect.line_detect_points(image_path)
+    uniq_line_start_end_points = sorted(uniq_line_start_end_points, key=lambda x: x[0][1])
+
+    print("Line")
+    line_count = len(uniq_line_start_end_points)
+    print(line_count)
+    print(uniq_line_start_end_points)
 
     for line in range(1, line_count+1):
 
@@ -173,6 +194,9 @@ for page in range(2, 100):
         dataFrame = save_csv(glyph, dataFrame)
         position = position + 1
 
+    # cv2.imshow(fr"img{page}", img)
+    # cv2.waitKey()
+    # cv2.destroyAllWindows()
 #######################################################################################################################
 # TODO make rectangle of every ayah
 # cv2.rectangle(img, left_top, right_bottom, (0, 0, 255), 5)
@@ -180,8 +204,8 @@ for page in range(2, 100):
 
 # cv2.rectangle(img, (min_x, min_y), (max_x, max_y), (0, 0, 255), 5)  # Red rectangles with thickness 2.
 # cv2.imshow("img", img)
-cv2.waitKey()
-cv2.destroyAllWindows()
+# cv2.waitKey()
+# cv2.destroyAllWindows()
 
 # Create a new DataFrame with a single row
 # new_row = pd.DataFrame({'page_no': [1], 'line': [2], 'position': [3], 'ayah': [4]})
