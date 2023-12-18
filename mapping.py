@@ -4,15 +4,21 @@ import support_class
 import cv2
 from model.glyph_model import Glyph
 import pandas as pd
+import index_to_data
 
-dataFrame = pd.DataFrame(columns=['page', 'index', 'line', 'position', 'min_x', 'min_y', 'max_x', 'max_y'])
+# dataFrame = pd.DataFrame(columns=['page', 'index', 'line', 'surah_number', 'ayah_number', 'position',
+#                                   'min_x', 'min_y', 'max_x', 'max_y'])
+
+dataFrame = pd.DataFrame(columns=['page_number', 'index', 'line_number', 'sura_number', 'ayah_number', 'position',
+                                  'min_x', 'min_y', 'max_x', 'max_y'])
 
 
 ########################################################################################################################
 
 
 def save_csv(gly, data_frame):
-    new_row = pd.DataFrame({'page': [gly.page], 'index': [gly.index], 'line': [gly.line],
+    new_row = pd.DataFrame({'page_number': [gly.page], 'index': [gly.index], 'line_number': [gly.line],
+                            'sura_number': [gly.surah_number], 'ayah_number': [gly.ayah_number],
                             'position': [gly.position], 'min_x': [gly.min_x], 'min_y': [gly.min_y],
                             'max_x': [gly.max_x], 'max_y': [gly.max_y]})
     return pd.concat([data_frame, new_row], ignore_index=True)
@@ -134,11 +140,12 @@ def line_position(line_no):
 # ayah start previous line end next line
 #######################################################################################################################
 
-index = 0
+index = 1
 position = 1
 
-
-for page in range(2, 15):
+for page in range(2, 612):
+    print("#" * 200)
+    print(f'page {page}')
     print("#" * 200)
 
     image_path = 'img/surah_border_less_sample/page-{0:03d}.png'.format(page)
@@ -161,9 +168,9 @@ for page in range(2, 15):
     print(line_count)
     print(uniq_line_start_end_points)
 
-    for line in range(1, line_count+1):
+    for line in range(1, line_count + 1):
 
-        print("#" * (line*5) + f"  Line {line}")
+        print("#" * (line * 5) + f"  Line {line}")
         ayah_in_line, current_line_ayahs = ayah_data_in_line(line)
         c_r_b, c_r_t, c_l_b, c_l_t = line_position(line)
         max_x = c_r_b[0]  # starting line before for loop
@@ -173,12 +180,14 @@ for page in range(2, 15):
             min_x = cur_ayah[0]
             min_y = c_l_t[1]
 
-            glyph = Glyph(page, index, line, position, min_x, min_y, max_x, max_y)
-            # mappings.append(glyph)
+            surah_number, ayah_number = index_to_data.get_surah_ayah_no(index)
+            glyph = Glyph(page, index, line, surah_number, ayah_number, position, min_x, min_y, max_x, max_y)
 
             cv2.rectangle(img, (min_x, min_y), (max_x, max_y), (0, 0, 255), 2)
             cv2.putText(img, 'pos {:d}'.format(position), (min_x, min_y), cv2.FONT_HERSHEY_SIMPLEX,
                         1, (0, 0, 255), 2, cv2.LINE_AA)
+            cv2.putText(img, 'inx {:d}'.format(index), (min_x + 100, min_y), cv2.FONT_HERSHEY_SIMPLEX,
+                        2, (0, 0, 255), 1, cv2.LINE_AA)
             dataFrame = save_csv(glyph, dataFrame)
 
             max_x = cur_ayah[0]  # next starting
@@ -187,7 +196,8 @@ for page in range(2, 15):
             position = 1
 
         # last part in line
-        glyph = Glyph(page, index, line, position, c_l_t[0], c_l_t[1], max_x, max_y)
+        surah_number, ayah_number = index_to_data.get_surah_ayah_no(index)
+        glyph = Glyph(page, index, line, surah_number, ayah_number, position, c_l_t[0], c_l_t[1], max_x, max_y)
         cv2.rectangle(img, c_l_t, (max_x, max_y), (0, 0, 255), 2)
         cv2.putText(img, 'pos {:d}'.format(position), (c_l_t[0], c_l_t[1] + 30), cv2.FONT_HERSHEY_SIMPLEX,
                     1, (0, 0, 255), 2, cv2.LINE_AA)

@@ -33,6 +33,19 @@ def line_detect_points(image_path):
             # add new circle all points
             all_start_point_list = all_start_point_list + support_class.points_in_circle_np(25, start_pt[0],
                                                                                             start_pt[1])
+            # Example usage: () rangel
+            x1, y1 = start_pt[0], start_pt[1]  # Top-left corner
+            x2, y2 = end_pt[0], end_pt[1] + 60  # Bottom-right corner
+
+            # print(x1)
+            # print(y1)
+            # print(x2)
+            # print(y2)
+
+            integer_points = support_class.get_integer_points_in_rectangle(x1, y1, x2, y2)
+            all_start_point_list = all_start_point_list + integer_points
+            # print(integer_points)
+
             # print(line_points)
             cv2.line(img, start_pt, end_pt, (0, 0, 255), 2)
             cv2.putText(img, 'point {:d}, {:d}, {}'.format(line_points[0][0], line_points[0][1], x), line_points[0],
@@ -42,12 +55,16 @@ def line_detect_points(image_path):
 
     # print(len(uniq_line_start_end_points))
 
-    # cv2.imwrite('test/line.png', img)
-    # cv2.imshow('image', img)
-    # cv2.waitKey(0)
-    # cv2.destroyAllWindows()
+    cv2.imwrite('test/line.png', img)
+    l = len(uniq_line_start_end_points)
+    print(image_path)
+    if l != 15:
+        print(l)
+    cv2.imshow('image', img)
+    cv2.waitKey(0)
+    cv2.destroyAllWindows()
 
     return uniq_line_start_end_points
 
 
-# line_detect_points('img/surah_border_less_sample/page-611.png')
+# line_detect_points('img/surah_border_less_sample/page-043.png')

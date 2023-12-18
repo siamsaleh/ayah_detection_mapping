@@ -48,6 +48,14 @@ def points_in_circle_np(radius, x0, y0):
 #         return False
 
 
+def get_integer_points_in_rectangle(x1, y1, x2, y2):
+    points = []
+    for x in range(x1, x2 + 1):
+        for y in range(y1, y2 + 1):
+            points.append((x, y))
+    return points
+
+
 def find_point_rectangle(left_top, right_bottom, point):
     if left_top[0] < point[0] < right_bottom[0] and left_top[1] < point[1] < right_bottom[1]:
         return True

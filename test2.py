@@ -1,17 +1,12 @@
-import cv2
+import line_detect
+import support_class
 
-# Read gray image
-img = cv2.imread("sample/page-600.png", 0)
+save_file_names = []  # all image names
+all_file_names = support_class.get_file_names("img/surah_border_less_sample/", "")
+image_count = len(all_file_names)
+print(image_count)
 
-# Create default parametrization LSD
-lsd = cv2.createLineSegmentDetector(0)
+# line_detect.line_detect_points(f'img/surah_border_less_sample/page-051.png')
 
-# Detect lines in the image
-lines = lsd.detect(img)[0]  # Position 0 of the returned tuple are the detected lines
-print(len(lines))
-# Draw detected lines in the image
-drawn_img = lsd.drawSegments(img, lines)
-
-# Show image
-cv2.imshow("LSD", drawn_img)
-cv2.waitKey(0)
+for x in range(2, 612):
+    line_detect.line_detect_points(f'img/surah_border_less_sample/{all_file_names[x]}')
