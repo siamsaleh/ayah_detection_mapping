@@ -140,10 +140,10 @@ def line_position(line_no):
 # ayah start previous line end next line
 #######################################################################################################################
 
-index = 1
+index = 6226
 position = 1
 
-for page in range(2, 612):
+for page in range(611, 612):
     print("#" * 200)
     print(f'page {page}')
     print("#" * 200)

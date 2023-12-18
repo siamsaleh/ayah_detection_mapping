@@ -55,16 +55,16 @@ def line_detect_points(image_path):
 
     # print(len(uniq_line_start_end_points))
 
-    cv2.imwrite('test/line.png', img)
+    # cv2.imwrite('test/line.png', img)
     l = len(uniq_line_start_end_points)
     print(image_path)
     if l != 15:
         print(l)
-    cv2.imshow('image', img)
-    cv2.waitKey(0)
-    cv2.destroyAllWindows()
+    # cv2.imshow('image', img)
+    # cv2.waitKey(0)
+    # cv2.destroyAllWindows()
 
     return uniq_line_start_end_points
 
 
-# line_detect_points('img/surah_border_less_sample/page-043.png')
+# line_detect_points('img/surah_border_less_sample/page-343.png')
