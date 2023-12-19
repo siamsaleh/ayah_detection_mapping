@@ -1,6 +1,7 @@
 import detect_ayah
 import support_class
 
+# this class create images of all ayah_detect (uncomment in ayah_detect)
 ########################################################################################################################
 # TODO ayah detect
 save_file_names = []  # all image names
