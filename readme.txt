@@ -1,3 +1,4 @@
+This is Indopak Tajweed
 1 make ayah & surah template
 2 make all images background white
 3 make borderless images
