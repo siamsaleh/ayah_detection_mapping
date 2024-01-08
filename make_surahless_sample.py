@@ -51,8 +51,8 @@ def template_matching(image_path, start_index, save_file_name):
             # cv2.putText(img_rgb, 'Ayah Index {:d}'.format(start_index), pt, cv2.FONT_HERSHEY_SIMPLEX,
             #             1, (255, 0, 0), 2, cv2.LINE_AA)
 
-            h_plus = 34
-            cv2.line(img_rgb, (pt[0], pt[1] + h_plus), (pt[0] + w, pt[1] + h_plus), (255, 255, 255), 70)
+            h_plus = 50
+            cv2.line(img_rgb, (pt[0], pt[1] + h_plus), (pt[0] + w, pt[1] + h_plus), (255, 255, 255), 95)
             print(pt)
             print(h)
             start_index = start_index + 1
@@ -89,4 +89,4 @@ for i in range(0, image_count):
 print(next_page_start)
 
 # uniq_detected_points, end_index = (
-#         surah_detect('borderless_sample/page-446.png', 0, 'test.png'))
+#         surah_detect('borderless_sample/page-115.png', 0, 'test.png'))

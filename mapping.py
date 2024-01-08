@@ -30,7 +30,7 @@ def ayah_data_in_line(line_no):
                         10, uniq_line_start_end_points[line_no - 1][1][1]]
         left_bottom = [uniq_line_start_end_points[line_no - 1][0][0] - 10,
                        uniq_line_start_end_points[line_no - 1][0][1]]
-        left_top = [left_bottom[0], left_bottom[1] - 60]
+        left_top = [left_bottom[0], left_bottom[1] - 90]
         is_available = support_class.find_point_rectangle(left_top, right_bottom, uniq_detected_points[i])
         if is_available:
             cur_line_ayahs.append(uniq_detected_points[i])
@@ -43,10 +43,10 @@ def ayah_data_in_line(line_no):
 
 def line_position(line_no):
     r_b = [uniq_line_start_end_points[line_no - 1][1][0] + 10, uniq_line_start_end_points[line_no - 1][1][1]]
-    r_t = [r_b[0], r_b[1] - 60]
+    r_t = [r_b[0], r_b[1] - 90]
 
     l_b = [uniq_line_start_end_points[line_no - 1][0][0] - 10, uniq_line_start_end_points[line_no - 1][0][1]]
-    l_t = [l_b[0], l_b[1] - 60]
+    l_t = [l_b[0], l_b[1] - 90]
 
     # print('Right Top {}'.format(r_t))
     # print('Right Bottom {}'.format(r_b))
@@ -61,17 +61,17 @@ def line_position(line_no):
 #######################################################################################################################
 
 # start index & position
-index = 6226
+index = 12
 position = 1
-start_page = 2
-end_page = 3
+start_page = 3
+end_page = 569
 
 for page in range(start_page, end_page + 1):
     print("#" * 200)
     print(f'page {page}')
     print("#" * 200)
 
-    image_path = 'img/surah_border_less_sample/page-{0:03d}.png'.format(page)
+    image_path = 'img/line_added_sample/page-{0:03d}.png'.format(page)
     img = cv2.imread(image_path, 0)
 
     # Ayah detected points
@@ -127,6 +127,7 @@ for page in range(start_page, end_page + 1):
         dataFrame = save_csv(glyph, dataFrame)
         position = position + 1
 
+    print(index)
     # cv2.imshow(fr"img{page}", img)
     # cv2.waitKey()
     # cv2.destroyAllWindows()

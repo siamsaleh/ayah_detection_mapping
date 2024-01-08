@@ -66,7 +66,8 @@ def template_matching(image_path, start_index, save_file_name):
 
     # TODO
     # cv2.imwrite('img/ayah_detect_final/' + save_file_name, img_rgb)
-
+    # cv2.imwrite(save_file_name, img_rgb)
+    #
     # cv2.imshow("Matched image", img_rgb)
     # cv2.waitKey()
     # cv2.destroyAllWindows()
@@ -84,3 +85,10 @@ def template_matching(image_path, start_index, save_file_name):
 def page_ayah_detect(image_path, start_index, save_file_name):
     uniq_detected_points, end_index = template_matching(image_path, start_index, save_file_name)
     return uniq_detected_points, end_index
+
+
+def page_info_method(image_path, start_index, save_file_name):
+    uniq_detected_points, end_index = template_matching(image_path, start_index, save_file_name)
+    return end_index
+
+# page_ayah_detect("sample/page-569.png", 1, "res.png")
