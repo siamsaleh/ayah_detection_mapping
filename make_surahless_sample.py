@@ -52,7 +52,7 @@ def template_matching(image_path, start_index, save_file_name):
             #             1, (255, 0, 0), 2, cv2.LINE_AA)
 
             h_plus = 50
-            cv2.line(img_rgb, (pt[0], pt[1] + h_plus), (pt[0] + w, pt[1] + h_plus), (255, 255, 255), 95)
+            cv2.line(img_rgb, (pt[0], pt[1] + h_plus), (pt[0] + w, pt[1] + h_plus), (242, 242, 242), 110)
             print(pt)
             print(h)
             start_index = start_index + 1
