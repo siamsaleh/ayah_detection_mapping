@@ -23,15 +23,15 @@ def get_all_detected_point(loc):
             # add new circle all points
             all_point_list = all_point_list + support_class.points_in_circle_np(25, point[0], point[1])
             # TODO uncomment
-            # print(point)
+            print(point)
 
             # print(all_point_list)
 
     # TODO uncomment
-    # print(uniq_detected_points)
-    # print("All points - {:d}".format(len(detected_points)))
-    # print("Uniq ayah/points - {:d}".format(len(uniq_detected_points)))
-    # print("##########################################################")
+    print(uniq_detected_points)
+    print("All points - {:d}".format(len(detected_points)))
+    print("Uniq ayah/points - {:d}".format(len(uniq_detected_points)))
+    print("##########################################################")
     # [D] [1st priroty A]
     uniq_detected_points = sorted(uniq_detected_points, key=lambda x: (x[1], -x[0]))
     return uniq_detected_points
@@ -65,16 +65,16 @@ def template_matching(image_path, start_index, save_file_name):
         start_index = start_index + 1
 
     # TODO
-    # cv2.imwrite('img/ayah_detect_final/' + save_file_name, img_rgb)
+    cv2.imwrite('img/ayah_detect_final/' + save_file_name, img_rgb)
     # cv2.imwrite(save_file_name, img_rgb)
     #
     # cv2.imshow("Matched image", img_rgb)
     # cv2.waitKey()
     # cv2.destroyAllWindows()
 
-    # print(image_path)
-    # print(start_index)
-    # print("###########################################################################################################")
+    print(image_path)
+    print(start_index)
+    print("###########################################################################################################")
     return uniq_detected_points, start_index
 
 
