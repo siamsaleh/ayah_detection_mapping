@@ -23,7 +23,7 @@ def get_all_detected_point(loc):
             # add new circle all points
             all_point_list = all_point_list + support_class.points_in_circle_np(25, point[0], point[1])
             # TODO uncomment
-            print(point)
+            # print(point)
 
             # print(all_point_list)
 

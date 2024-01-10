@@ -21,4 +21,4 @@ def page_add_lines(image_path, save_file_name):
     # cv2.waitKey(0)
 
 
-# page_add_lines("sample/page-005.png", "res.png")
+# page_add_lines("img/surah_border_less_sample/page-005.png", "page-005.png")

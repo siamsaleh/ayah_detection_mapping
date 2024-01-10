@@ -30,7 +30,7 @@ def ayah_data_in_line(line_no):
                         10, uniq_line_start_end_points[line_no - 1][1][1]]
         left_bottom = [uniq_line_start_end_points[line_no - 1][0][0] - 10,
                        uniq_line_start_end_points[line_no - 1][0][1]]
-        left_top = [left_bottom[0], left_bottom[1] - 90]
+        left_top = [left_bottom[0], left_bottom[1] - 85]
         is_available = support_class.find_point_rectangle(left_top, right_bottom, uniq_detected_points[i])
         if is_available:
             cur_line_ayahs.append(uniq_detected_points[i])
@@ -43,10 +43,10 @@ def ayah_data_in_line(line_no):
 
 def line_position(line_no):
     r_b = [uniq_line_start_end_points[line_no - 1][1][0] + 10, uniq_line_start_end_points[line_no - 1][1][1]]
-    r_t = [r_b[0], r_b[1] - 90]
+    r_t = [r_b[0], r_b[1] - 85]
 
     l_b = [uniq_line_start_end_points[line_no - 1][0][0] - 10, uniq_line_start_end_points[line_no - 1][0][1]]
-    l_t = [l_b[0], l_b[1] - 90]
+    l_t = [l_b[0], l_b[1] - 85]
 
     # print('Right Top {}'.format(r_t))
     # print('Right Bottom {}'.format(r_b))
@@ -61,10 +61,10 @@ def line_position(line_no):
 #######################################################################################################################
 
 # start index & position
-index = 12
+index = 13
 position = 1
-start_page = 3
-end_page = 569
+start_page = 4
+end_page = 605
 
 for page in range(start_page, end_page + 1):
     print("#" * 200)

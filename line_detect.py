@@ -10,7 +10,7 @@ def line_detect_points(image_path, save_file_name="test/line.png"):
     # blurred = cv2.GaussianBlur(gray, (5, 5), 0)
     edges = cv2.Canny(gray, 50, 150, apertureSize=3)
 
-    lines = cv2.HoughLinesP(edges, 1, np.pi / 180, 200, minLineLength=900, maxLineGap=30)  # 584 580 900
+    lines = cv2.HoughLinesP(edges, 1, np.pi / 180, 200, minLineLength=790, maxLineGap=40)  # 584 580 900
 
     uniq_line_start_end_points = []  # [(x1, y1), (x2, y2)]
 
@@ -75,4 +75,5 @@ def line_detect_points(image_path, save_file_name="test/line.png"):
 
     return uniq_line_start_end_points
 
-# line_detect_points('img/line_test/page-006.png')
+# line_detect_points('img/line_added_sample/page-177.png')
+# line_detect_points('sample.png')

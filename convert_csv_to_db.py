@@ -1,7 +1,6 @@
 import sqlite3
 import pandas as pd
 
-# db_path = "glyph.csv"
 db_path = "glyph.csv"
 
 conn = sqlite3.connect("glyphs.db")  # Provide a desired database name
