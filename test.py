@@ -12,4 +12,8 @@
 #         page_all_line.page_line_detect('sample/page-600.png', 0, 'test/line2.png'))
 #
 
+# import numpy as np
+# file_data = np.loadtxt("num.txt", dtype=int)
+# for x in range(0, len(file_data)):
+#     print(file_data[x] - 1)
 
